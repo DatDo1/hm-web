@@ -5,6 +5,7 @@ use App\Http\Controllers\clientController;
 use App\Http\Controllers\adminC\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Middleware\CheckPermission;
+use App\Http\Controllers\adminC\HousesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +32,14 @@ use App\Http\Middleware\CheckPermission;
 //     })->name('add_admin');
 // });
 
+// Route::get('abc', function(){
+//     return view('layouts.admin');
+// });
+
 Route::group([
-    'name' => 'admin',
+    'name' => 'admin.',
     'prefix' => 'admin',
-    'middleware' => 'auth'
+    // 'middleware' => 'auth'
 ], function () {
     Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
@@ -42,7 +47,7 @@ Route::group([
         return View('admin.users');
     })->name('admin.add-users');
 
-
+    Route::get('/houses', [HousesController::class, 'index'])->name('houses');
     
 });
 

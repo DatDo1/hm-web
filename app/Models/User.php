@@ -17,6 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // Trong Models nên để Số ít, trong DB thì để số nhiều, primary key thì để 'ID'
+    protected $table="user";
+    protected $primaryKey="UserID";
     protected $fillable = [
         'name',
         'email',
@@ -41,4 +44,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }
