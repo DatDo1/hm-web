@@ -55,6 +55,7 @@
                     <th>House Status</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th>Price</th>
                 </tr>
 
             </thead>
@@ -85,10 +86,11 @@
                     <td><input type="checkbox" /></td>
                     <td><a href="#">{{$value->TypeOfHouse}}</a></td>
                     <td><a href="#" title="title">{{$value->user->UserName}}</a></td>
-                    <td>Consectetur adipiscing</td>
-                    <td>Donec tortor diam</td>
-                    <td>123</td>
-                    <td>123</td>
+                    <td>{{$value->user->Phone}}</td>
+                    <td>{{$value->HouseStatus}}</td>
+                    <td>{{$value->StartDate}}</td>
+                    <td>{{$value->EndDate}}</td>
+                    <td>{{$value->Price}}</td>
                     <td>
                         <!-- Icons -->
                         <a href="#" title="Edit"><img src="../admins/resources/images/icons/pencil.png"
