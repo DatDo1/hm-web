@@ -9,7 +9,6 @@ use App\Models\House;
 class HousesController extends Controller
 {
     private $house;
-    private $user;
     public function __construct(){
         $this->house = new House();
     }
