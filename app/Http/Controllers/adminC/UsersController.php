@@ -4,18 +4,18 @@ namespace App\Http\Controllers\adminC;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Users;
+use App\Models\User;
 
 class UsersController extends Controller
 {
     private $users;
     public function __construct() {
-        $this->users = new Users();
+        $this->users = new User();
     }
 
     public function index() {
         $title ='Danh sách người dùng';
-        $usersList = $this->users->getAllUsers();
+        $usersList = User::all();
 
         return view('admin.users', compact('title', 'usersList'));
     }

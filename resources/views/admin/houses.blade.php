@@ -51,10 +51,9 @@
                     <th><input class="check-all" type="checkbox" /></th>
                     <th>Type of House</th>
                     <th>House Owner</th>
-                    <th>Phone Number</th>
+                    <th>Phone Number</th>  
                     <th>House Status</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
+                    <th>Picture</th>
                     <th>Price</th>
                 </tr>
 
@@ -88,8 +87,7 @@
                     <td><a href="#" title="title">{{$value->user->UserName}}</a></td>
                     <td>{{$value->user->Phone}}</td>
                     <td>{{$value->HouseStatus}}</td>
-                    <td>{{$value->StartDate}}</td>
-                    <td>{{$value->EndDate}}</td>
+                    <td>{{$value->Image}}</td>
                     <td>{{$value->Price}}</td>
                     <td>
                         <!-- Icons -->

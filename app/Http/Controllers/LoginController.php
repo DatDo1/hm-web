@@ -101,6 +101,7 @@ class LoginController extends Controller
         $validator = Validator::make($request->all(),$rules, $messages, $attributes);
         // $validator->validate();
         return back()->withErrors($validator);
-
     }
+
+    
 }

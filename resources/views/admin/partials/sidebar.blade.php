@@ -25,28 +25,19 @@
                         Dashboard
                     </a>
                 </li>
+                
+                <li>
+                    <a href="" class="nav-top-item">Users Management</a>
+                    <ul>
+                         <li><a href="{{route('admin.users')}}" class="current">User List</a></li>
+                     </ul>  
+                 </li>
 
                 <li>
-                    <a href="#" class="nav-top-item current">
-                        Product Management
-                    </a>
+                    <a href="" class="nav-top-item">Houses Management</a>
                     <ul>
-                        {{-- <li><a class="current" href="{{route('admin.houses')}}">Product List</a></li> --}}
-                        {{-- <li><a href="{{route('admin.users')}}">User List</a></li> --}}
-                        <!-- Add class "current" to sub menu items also -->
-                        <!-- <li><a href="#">Manage Comments</a></li>
-                    <li><a href="#">Manage Categories</a></li> -->
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#" class="nav-top-item">
-                        Pages
-                    </a>
-                    <ul>
-                        <li><a href="#">Create a new Page</a></li>
-                        <li><a href="#">Manage Pages</a></li>
-                    </ul>
+                        <li><a href="{{route('admin.houses')}}" class="current">House List</a></li>
+                    </ul>   
                 </li>
 
                 <li>
