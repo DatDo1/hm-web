@@ -9,6 +9,7 @@ use App\Models\House;
 class HousesController extends Controller
 {
     private $house;
+    private $user;
     public function __construct(){
         $this->house = new House();
     }
@@ -17,4 +18,5 @@ class HousesController extends Controller
         $housesList = House::all();// $this->house->getAllHouses();
         return View('admin.houses', compact('title', 'housesList'));
     }
+
 }
