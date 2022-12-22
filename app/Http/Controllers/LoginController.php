@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Session;
+use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
+
 
 class LoginController extends Controller
 {
@@ -47,7 +52,6 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -84,24 +88,58 @@ class LoginController extends Controller
         //
     }
 
-    public function checkValidate(Request $request){
+    public function checkValidate(Request $request)
+    {
         $messages = [
             'required' => ':attribute nhập không hợp lệ',
-            'min' => ':attribute không được nhỏ hơn :min ký tự'
+            // 'min' => ':attribute không được nhỏ hơn :min ký tự'
         ];
         $attributes = [
-            'username' => 'Tài khoản',
+            'email' => 'Email',
             'password' => 'Mật khẩu'
         ];
 
         $rules = [
-            'username' => 'required',
-            'password' => 'required|min:6'
+            'email' => 'required|unique:users',
+            'password' => 'required'
         ];
-        $validator = Validator::make($request->all(),$rules, $messages, $attributes);
+        $validator = Validator::make($request->all(), $rules, $messages, $attributes);
         // $validator->validate();
         return back()->withErrors($validator);
+        // dd($validator);
     }
 
-    
+    public function userLogin(Request $request)
+    {
+        $data = $request->input();
+       
+        $userList = UserInfo::all();
+        $messageAnou = 'Tài khoản hoặc mật khẩu không chính xác';
+        foreach ($userList as $key => $value) {
+            if($data['email'] == $value->user->email && Hash::make($data['password'] == $value->user->password)) {
+                if ($value->RoleID == 1) {
+                    $request->session()->put('user', $value->user->name);
+                    return redirect('admin/houses-management');
+                } else if ($value->RoleID == 0) {
+                    $request->session()->put('user',  $value->user->name);
+                    return redirect('');
+                }
+            } 
+        }
+        return redirect('login')->with('message', $messageAnou);
+    }
+    public function adminLogout(Request $request)
+    {
+        if (session()->has('user')) {
+            session()->pull('user');
+        }
+        return redirect('login');
+    }
+
+    public function userLogout(Request $request){
+        if (session()->has('user')) {
+            session()->pull('user');
+        }
+        return redirect('');
+    }
 }

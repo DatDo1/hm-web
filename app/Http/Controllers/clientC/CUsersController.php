@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\userC;
+namespace App\Http\Controllers\clientC;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class CUsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        
+    } 
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -81,5 +79,9 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sellStatus(){
+        
     }
 }

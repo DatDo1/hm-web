@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\adminC;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-
-class HomeController extends Controller
+class RegisterController extends Controller
 {
-
-    public function __construct()
-    {
-        //Su dung session de check login
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $title = 'Trang chủ - Admin';
-        return View('admin.index', compact('title'));
+        return View('register');
     }
 
     /**
@@ -31,7 +26,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -88,5 +83,43 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    // public function checkValidate(Request $request){
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'email' => 'required|email|unique:users',
+    //         'password' => 'required|min:6'
+    //     ]);
+    //     $data = $request->all();
+
+    //     User::create([  
+    //         'name' => $data['name'],
+    //         'password' => Hash::make($data['password'])
+    //     ]);
+
+    //     return redirect('login')->with('success','Ban co the dang nhap');
+    // }
+
+    public function createData(array $data){
+        return User::create([
+            'name' => $data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'])
+        ]);
+    }
+
+    public function userRegister(Request $request){
+        $request->validate([
+            'username' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:6'
+        ]);
+
+        $data = $request->all();
+        $create = $this->createData($data);
+        if ($create) {
+            return redirect('login');
+        }
     }
 }

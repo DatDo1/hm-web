@@ -10,10 +10,10 @@
 
             <!-- Sidebar Profile links -->
             <div id="profile-links">
-                Hello, <a href="#" title="Edit your profile">John Doe</a>, you have <a href="#messages" rel="modal"
-                    title="3 Messages">3 Messages</a><br />
+                Hello, <a href="#" title="Edit your profile">{{session('user')}}</a>
                 <br />
-                <a href="#" title="View the Site">View the Site</a> | <a href="#" title="Sign Out">Sign Out</a>
+                <br />
+                <a href="#" title="View the Site">View the Site</a> | <a href="{{route('adminLogout')}}" title="Logout">Logout</a>
             </div>
 
             <ul id="main-nav">

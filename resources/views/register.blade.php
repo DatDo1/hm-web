@@ -5,7 +5,7 @@
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		
-		<title>Sign In</title>
+		<title>Register</title>
 		
 		<!--                       CSS                       -->
 	  
@@ -63,44 +63,37 @@
 		
 		<div id="login-wrapper" class="png_bg">
 			<div id="login-top">
-				@if(session('message'))
-				<div class="alert">{{session('message')}}</div>
-			@endif
+				<!-- <img id="logo" src="user/resources/images/logo.png" alt="Admin logo" /> -->
 			</div> <!-- End #logn-top -->
 			
-			
-
 			<div id="login-content">
 				
-				<form action="{{route('post-login')}}" method="POST">
+				<form action="{{route('post-register')}}" method="POST">
 					@csrf
 					<p>
-						@error('email')
-							<span style="color:red; margin-left: 90px;">{{$message}}</span>
-						@enderror
+						@if($errors->has('username'))
+							<span style="color:red; margin-left: 90px;">{{$error->first('username')}}</span>
+						@endif
+						<label>Username</label>
+						<input class="text-input" type="text" name="username" />
+					</p>
+					<div class="clear"></div>
+					
+					<p>
 						<label>Email</label>
-						<input class="text-input" type="email" name="email"/>
+						<input class="text-input" type="email" name="email" />
 					</p>
 					<div class="clear"></div>
 					<p>
-						@error('password')
-							<span style="color:red; margin-left: 90px;">{{$message}}</span>
-						@enderror
+						@if($errors->has('password'))
+							<span style="color:red; margin-left: 90px;">{{$error->first('password')}}</span>
+						@endif
 						<label>Password</label>
-						<input class="text-input" type="password" name="password"/>
+						<input class="text-input" type="password" name="password" />
 					</p>
 					<div class="clear"></div>
-					<div>
-						<a href="{{route('register')}}" style="">
-							Don't have an account?
-						</a>
-						<p id="remember-password">
-							<input type="checkbox"/>Remember me
-						</p>
-					</div>
-					<div class="clear"></div>
 					<p>
-						<input class="button" type="submit" value="Sign In" />
+						<input class="button" type="submit" value="Sign up" />
 					</p>
 					
 				</form>

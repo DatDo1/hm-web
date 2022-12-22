@@ -18,8 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     // Trong Models nên để Số ít, trong DB thì để số nhiều, primary key thì để 'ID'
-    protected $table="user";
-    protected $primaryKey="UserID";
+    protected $table="users";
+    protected $primaryKey="id";
     protected $fillable = [
         'name',
         'email',
@@ -45,5 +45,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function userInfo()
+    {
+        return $this->belongsTo(UserInfo::class, 'UserID');
+    }
     
 }
+

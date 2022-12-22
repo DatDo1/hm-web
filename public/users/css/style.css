@@ -102,7 +102,7 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-    margin-right: 30px;
+    margin-right: 49px;
     padding: 25px 0;
     color: #FFFFFF;
     font-size: 15px;
@@ -442,4 +442,52 @@
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+.icon-custom {
+    position: relative;
+}
+
+.icon-custom i {
+    padding: 12px;
+}
+
+.subnav {
+    position: absolute;
+    top: 50px;
+    right: -90px;
+    list-style-type: none;
+    display: none;
+    padding: 0;
+    width: 126px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+}
+
+.subnav li a {
+    color: #000;
+    text-decoration: none;
+    text-transform: none;
+    line-height: 16px;
+    padding: 0 24px;
+    font-size: 14px;
+}
+
+.subnav li:hover a {
+    background-color: var(--dark);
+    color: #FFF;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.icon-custom:hover ul {
+    display: block;
+}
+
+.text-input {
+    width: 50%;
+}
+
+.custom-addnews {
+    margin: 12px;
 }

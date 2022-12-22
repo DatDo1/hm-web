@@ -3,11 +3,11 @@
         <div class="col-md-12">
             <div class="owl-carousel header-carousel">
                 <div class="owl-carousel-item">
-                    <img class="img-fluid" src="../clients/img/carousel-1.jpg" alt="img1">
+                    <img class="img-fluid" src="../users/img/carousel-1.jpg" alt="img1">
                 </div>
-                <!-- <div class="owl-carousel-item">
-                    <mg class="img-fluid" src="../clients/img/carousel-2.jpg" alt="img2">
-                </div> -->
+                 <div class="owl-carousel-item">
+                    <img class="img-fluid" src="../users/img/carousel-2.jpg" alt="img2">
+                </div> 
             </div>
         </div>
     </div>

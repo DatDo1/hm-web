@@ -12,14 +12,18 @@ class House extends Model
     //     $houses = DB::select("SELECT * FROM house");
     //     return $houses;
     // }
+
+    protected $table="house";
+    protected $primaryKey="HouseID";
+
     public function user()
     {
         return $this->belongsTo(User::class, 'UserID');
     }
 
-   // return $this->belongsTo(Post::class);
-   protected $table="house";
-   protected $primaryKey="HouseID";
+    public function news(){
+        return $this->hasMany(News::class, 'NewsID');
+    }
 
 }
 

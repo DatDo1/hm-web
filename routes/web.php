@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\clientController;
-use App\Http\Controllers\adminC\HomeController;
+use App\Http\Controllers\clientC\CHouseController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\CheckPermission;
 use App\Http\Controllers\adminC\HousesController;
 use App\Http\Controllers\adminC\UsersController;
+use App\Http\Controllers\clientC\CNewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,23 +20,6 @@ use App\Http\Controllers\adminC\UsersController;
 |
 */
 
-//  Route::get('login', [LoginController::class,'index'])->name('login_page');
-
-
-// Route::prefix('admin')->middleware('checkpermission')->name('admin')->group(function () {
-
-//     Route::get('', function () {
-//         return View('admin.index');
-//     })->name('home_admin');
-
-//     Route::get('/add', function(){
-//         return View('admin.index');
-//     })->name('add_admin');
-// });
-
-// Route::get('abc', function(){
-//     return view('layouts.admin');
-// });
 
 Route::group([
     'name' => 'admin.',
@@ -44,33 +28,36 @@ Route::group([
 ], function () {
     Route::get('', [HousesController::class, 'index'])->name('admin.home');
 
-    Route::get('/products-management',[HousesController::class, 'index'])->name('admin.houses');
+    Route::get('/houses-management',[HousesController::class, 'index'])->name('admin.houses');
     Route::get('/users-management', [UsersController::class, 'index'])->name('admin.users');
     
 });
 
 Route::prefix('')->group(function () {
 
-    Route::get('', function () {
-        return View('client.home');
-    })->name('client.home');
+    Route::get('',[CNewsController::class, 'index'])->name('client.home');
 
-    Route::get('buy', function () {
-        return View('client.buy');
-    })->name('client.buy');
-
-    Route::get('sell', function () {
-        return View('client.sell');
-    })->name('client.sell');
+    Route::get('sell', [CNewsController::class, 'sellStatus'])->name('client.sell');
 
     Route::get('rent', function () {
         return View('client.rent');
     })->name('client.rent');
 
+    Route::get('detail/{id}', [CNewsController::class, 'detailNews'])->name('client.detail');
 
+    Route::get('add-news', [CNewsController::class, 'addNews'])->name('client.addNews');
+    Route::post('add-news', [CNewsController::class, 'storeNews'])->name('client.storeNews');
+
+    Route::get('my-news', [CNewsController::class, 'myNews'])->name('client.myNews');
+    Route::get('editNews/{id}', [CNewsController::class, 'editNews'])->name('client.editNews');
 
 });
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'checkValidate'])->name('post-login');
+Route::post('login', [LoginController::class, 'userLogin'])->name('post-login');
+Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::post('register', [RegisterController::class, 'userRegister'])->name('post-register');
+
+Route::get('adminLogout', [LoginController::class, 'adminLogout'])->name('adminLogout');
+Route::get('userLogout', [LoginController::class, 'userLogout'])->name('userLogout');
 

@@ -87,7 +87,9 @@
                     <td><a href="#" title="title">{{$value->user->UserName}}</a></td>
                     <td>{{$value->user->Phone}}</td>
                     <td>{{$value->HouseStatus}}</td>
-                    <td>{{$value->Image}}</td>
+                    {{-- <td>
+                        <img src="../users/img/{{$value->Image}}">
+                    </td> --}}
                     <td>{{$value->Price}}</td>
                     <td>
                         <!-- Icons -->

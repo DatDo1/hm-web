@@ -10,10 +10,28 @@
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<div class="navbar-nav ms-auto">
 						<a href="{{route('client.home')}}" class="nav-item nav-link">Trang chủ</a>
-						<a href="{{route('client.buy')}}" class="nav-item nav-link">Mua nhà</a>
 						<a href="{{route('client.sell')}}" class="nav-item nav-link">Bán nhà</a>
 						<a href="{{route('client.rent')}}" class="nav-item nav-link">Thuê nhà</a>
-						<a href="{{route('login')}}" class="nav-item nav-link">Đăng nhập</a>
+						@if(!session('user'))
+							<a href="{{route('login')}}" class="nav-item nav-link">Đăng nhập</a>
+						@endif
+
+						@if(session('user'))
+							<div href="" class="nav-item nav-link icon-custom">
+								<i class="bi bi-person"> Hi, {{session('user')}}</i>
+								<ul class="subnav">
+									<li>
+										<a href="{{route('client.addNews')}}" class="">Tạo tin mới</a>
+									</li>
+									<li>
+										<a href="{{route('client.myNews')}}" class="">Tin của tôi</a>
+									</li>
+									<li>
+										<a href="{{route('userLogout')}}" style="padding-right: 32px">Đăng xuất</a>
+									</li>
+								</ul>
+							</div>
+						@endif
 					</div>
 					{{-- <a href="" class="btn btn-primary px-3 d-none d-lg-flex">NHÀ TRỌ SINH VIÊN</a> --}}
 				</div>

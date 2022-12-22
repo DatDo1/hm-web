@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\adminC;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -14,10 +15,14 @@ class UsersController extends Controller
     }
 
     public function index() {
-        $title ='Danh sách người dùng';
-        $usersList = User::all();
-
-        return view('admin.users', compact('title', 'usersList'));
+        if(Auth::check()) {
+            $title ='Danh sách người dùng';
+            $usersList = User::all();
+            return view('admin.users', compact('title', 'usersList'));
+        }else {
+            return redirect('login');
+        }
+       
     }
     public function add(){
         $title = 'Thêm người dùng';

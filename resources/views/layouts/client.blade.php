@@ -35,7 +35,8 @@
     <div class="container-xxl bg-white p-0">
         <header>
             @include('client.partials.navbar')
-            @include('client.partials.slider')
+            
+            @yield('slider')
         </header>
         <main>
             @include('client.partials.search')
