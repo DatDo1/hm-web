@@ -27,6 +27,9 @@
 										<a href="{{route('client.myNews')}}" class="">Tin của tôi</a>
 									</li>
 									<li>
+										<a href="{{route('client.myHouses')}}" class="">Nhà của tôi</a>
+									</li>
+									<li>
 										<a href="{{route('userLogout')}}" style="padding-right: 32px">Đăng xuất</a>
 									</li>
 								</ul>

@@ -8,6 +8,8 @@ use App\Http\Middleware\CheckPermission;
 use App\Http\Controllers\adminC\HousesController;
 use App\Http\Controllers\adminC\UsersController;
 use App\Http\Controllers\clientC\CNewsController;
+use App\Http\Controllers\clientC\CHousesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,17 +41,23 @@ Route::prefix('')->group(function () {
 
     Route::get('sell', [CNewsController::class, 'sellStatus'])->name('client.sell');
 
-    Route::get('rent', function () {
-        return View('client.rent');
-    })->name('client.rent');
+    Route::get('rent', [CNewsController::class, 'rentStatus'])->name('client.rent');
 
     Route::get('detail/{id}', [CNewsController::class, 'detailNews'])->name('client.detail');
-
     Route::get('add-news', [CNewsController::class, 'addNews'])->name('client.addNews');
-    Route::post('add-news', [CNewsController::class, 'storeNews'])->name('client.storeNews');
-
+    Route::post('add-news', [CNewsController::class, 'storeNews'])->name('client.storeNews'); //Them 1 tin moi
     Route::get('my-news', [CNewsController::class, 'myNews'])->name('client.myNews');
-    Route::get('editNews/{id}', [CNewsController::class, 'editNews'])->name('client.editNews');
+    Route::get('edit-news/{idNews}', [CNewsController::class, 'editNews'])->name('client.editNews');
+    Route::post('edit-news', [CNewsController::class, 'storeEditNews'])->name('client.storeEditNews'); //Sua 1 tin da co
+    Route::delete('my-news/{id}/delete', [CNewsController::class, 'deleteNews'])->name('client.deleteNews');
+
+    
+    Route::get('my-houses', [CHousesController::class, 'myHouses'])->name('client.myHouses');
+    Route::get('my-houses/add-houses', [CHousesController::class, 'addHouses'])->name('client.addHouses');
+    Route::post('my-houses/add-houses', [CHousesController::class, 'storeHouses'])->name('client.storeHouses');
+    Route::get('edit-houses/{idHouse}', [CHousesController::class, 'editHouses'])->name('client.editHouses');
+    Route::post('edit-houses', [CHousesController::class, 'storeEditHouses'])->name('client.storeEditHouses');
+    Route::delete('my-houses/{id}/delete', [CHousesController::class, 'deleteHouse'])->name('client.deleteHouse');
 
 });
 

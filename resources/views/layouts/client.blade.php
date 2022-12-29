@@ -8,7 +8,7 @@
     <title> @yield('title') </title>
 
 	<!-- Favicon -->
-	<link href="./users/img/favicon.png" rel="icon">
+	<link href="./users/img/favicon.png" rel="icon" type="image/x-icon"> 
 
 	<!-- Google Web Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,6 @@
             @yield('slider')
         </header>
         <main>
-            @include('client.partials.search')
             <div class="content">
                 @yield('content')
             </div>

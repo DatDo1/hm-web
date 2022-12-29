@@ -23,4 +23,8 @@ class UserInfo extends Model
     public function user(){
         return $this->hasOne(User::class, 'id');
     }
+
+    public function role(){
+        return $this->belongsTo(Role::class, 'RoleID');
+    }
 }

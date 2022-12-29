@@ -4,7 +4,7 @@
 <head>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		
+		<link href="./users/img/favicon.png" rel="icon">
 		<title>Register</title>
 		
 		<!--                       CSS                       -->

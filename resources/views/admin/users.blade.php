@@ -52,7 +52,9 @@
                     <th>User Name</th>
                     <th>User Age</th>
                     <th>Phone</th>
-            
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
                 </tr>
 
             </thead>
@@ -84,15 +86,15 @@
                     <td>{{$value->UserName}}</td>
                     <td>{{$value->UserAge}}</td>
                     <td>{{$value->Phone}}</td>
+                    <td>{{$value->user->email}}</td>
+                    <td>{{$value->user->password}}</td>
+                    <td>{{$value->role->RoleName}}</td>
                     <td>
                         <!-- Icons -->
                         <a href="#" title="Edit"><img src="../admins/resources/images/icons/pencil.png"
                                 alt="Edit" /></a>
                         <a href="#" title="Delete"><img src="../admins/resources/images/icons/cross.png"
                                 alt="Delete" /></a>
-                        <a href="#" title="Edit Meta"><img
-                                src="../admins/resources/images/icons/hammer_screwdriver.png"
-                                alt="Edit Meta" /></a>
                     </td>
                 </tr>
                 @endforeach

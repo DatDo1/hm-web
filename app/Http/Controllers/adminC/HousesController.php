@@ -16,10 +16,14 @@ class HousesController extends Controller
     }
     public function index()
     {
-        if (Auth::check() || session('user')) {
-            $title = 'Danh sách nhà';
-            $housesList = House::all(); // $this->house->getAllHouses();
-            return View('admin.houses', compact('title', 'housesList'));
+        if (Auth::check() || session('userID')) {
+            if (session('RoleID') == 1) {
+                $title = 'Danh sách nhà';
+                $housesList = House::all();
+                return View('admin.houses', compact('title', 'housesList'));
+            }else {
+                return redirect('');
+            }
         }else {
             return redirect('login');
         }

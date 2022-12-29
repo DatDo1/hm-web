@@ -53,7 +53,7 @@
                     <th>House Owner</th>
                     <th>Phone Number</th>  
                     <th>House Status</th>
-                    <th>Picture</th>
+                    <th>Room</th>
                     <th>Price</th>
                 </tr>
 
@@ -84,9 +84,10 @@
                 <tr>
                     <td><input type="checkbox" /></td>
                     <td><a href="#">{{$value->TypeOfHouse}}</a></td>
-                    <td><a href="#" title="title">{{$value->user->UserName}}</a></td>
-                    <td>{{$value->user->Phone}}</td>
-                    <td>{{$value->HouseStatus}}</td>
+                    <td><a href="#" title="title">{{$value->userInfo->UserName}}</a></td>
+                    <td>{{$value->userInfo->Phone}}</td>
+                    <td>{{$value->Location}}</td>
+                    <td>{{$value->Room}}</td>
                     {{-- <td>
                         <img src="../users/img/{{$value->Image}}">
                     </td> --}}
@@ -97,9 +98,6 @@
                                 alt="Edit" /></a>
                         <a href="#" title="Delete"><img src="../admins/resources/images/icons/cross.png"
                                 alt="Delete" /></a>
-                        <a href="#" title="Edit Meta"><img
-                                src="../admins/resources/images/icons/hammer_screwdriver.png"
-                                alt="Edit Meta" /></a>
                     </td>
                 </tr>
                 @endforeach

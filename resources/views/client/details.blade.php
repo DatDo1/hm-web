@@ -17,7 +17,7 @@
                 <div>
                     <div class="col-xs-5">
                         <h3>{{$news->NewsName}}</h3>  
-                        <h5 class="" style="color:red"><small>{{$news->house->HouseStatus}}</small></h5> <br>
+                        <h5 class="" style="color:red"><small>{{$news->HouseStatus}}</small></h5> <br>
                         <div class="row">
                             <h6 class="col-4">
                                 Mức giá <br>
@@ -33,7 +33,7 @@
                             </h6>
                         </div>
                         <div class=""><small>{{$news->Description}}</small></div>
-                        <h6 class=""><small>{{$news->house->Location}}</small></h6> <br>
+                        <h6 class=""><small>{{$news->house->Location}}, {{$news->house->city->CityName}}</small></h6> <br>
 
                      
                         <div class=""><small>Được đăng bởi</small></div>

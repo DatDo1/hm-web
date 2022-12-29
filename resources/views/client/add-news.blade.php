@@ -1,4 +1,5 @@
 @extends('layouts.client')
+
 @section('title')
     {{$title}}
 @endsection
@@ -23,8 +24,8 @@
                 </div>
                 <div class="col-10">
                     <select name="newstype" class="text-input">
-                    <option value="1">Tin thường</option>
-                    <option value="2">Tin Vip</option>
+                    <option value="1">Tin thường - 5000VNĐ/ngày</option>
+                    <option value="2">Tin Vip - 10000VNĐ/ngày</option>
                 </select></div>	
             </div>
 
@@ -47,6 +48,17 @@
                         @endforeach
                     </select>
                 </div>	
+            </div>
+
+            <div class="row custom-addnews">
+                <div class="col-2 text-dark ">
+                    <label><strong>Trạng thái nhà</strong></label>
+                </div>
+                <div class="col-10">
+                    <select name="housestatus" class="text-input">
+                    <option value="1">Bán nhà</option>
+                    <option value="2">Thuê nhà</option>
+                </select></div>	
             </div>
 
             <div class="row custom-addnews">

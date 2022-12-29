@@ -482,6 +482,11 @@
 
 .icon-custom:hover ul {
     display: block;
+
+}
+
+.icon-custom:hover {
+    cursor: pointer;
 }
 
 .text-input {

@@ -13,7 +13,7 @@
                 Hello, <a href="#" title="Edit your profile">{{session('user')}}</a>
                 <br />
                 <br />
-                <a href="#" title="View the Site">View the Site</a> | <a href="{{route('adminLogout')}}" title="Logout">Logout</a>
+                <a href="/" title="View the Site">View the Site</a> | <a href="{{route('adminLogout')}}" title="Logout">Logout</a>
             </div>
 
             <ul id="main-nav">
@@ -40,7 +40,7 @@
                     </ul>   
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="#" class="nav-top-item">
                         Image Gallery
                     </a>
@@ -73,7 +73,7 @@
                         <li><a href="#">Your Profile</a></li>
                         <li><a href="#">Users and Permissions</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
             </ul> <!-- End #main-nav -->
 
