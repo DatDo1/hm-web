@@ -1,7 +1,7 @@
 
 <div class="container-fluid nav-bar bg-transparent">
 			<nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-				<a href="index.php" class="navbar-brand d-flex align-items-center text-center">
+				<a href="{{route('client.home')}}" class="navbar-brand d-flex align-items-center text-center">
 					<h1 class="m-0 text-primary">Housing</h1>
 				</a>
 				<div class="col-md-4 bd border border-primary">

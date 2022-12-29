@@ -59,6 +59,9 @@ Route::prefix('')->group(function () {
     Route::post('edit-houses', [CHousesController::class, 'storeEditHouses'])->name('client.storeEditHouses');
     Route::delete('my-houses/{id}/delete', [CHousesController::class, 'deleteHouse'])->name('client.deleteHouse');
 
+
+    Route::post('searchNews', [CNewsController::class, 'searchNews'])->name('client.searchNews');
+
 });
 
 Route::get('login', [LoginController::class, 'index'])->name('login');

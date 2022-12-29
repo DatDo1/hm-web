@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\UserInfo;
+use Facade\FlareClient\View;
 
 class CNewsController extends Controller
 {
@@ -268,6 +269,22 @@ class CNewsController extends Controller
             return redirect('my-news')->with('message', 'Xóa tin tức thành công!!');
         }
         return redirect('my-news')->with('message', 'Xóa tin tức thất bại!!');
+    }
+
+    public function searchNews(Request $request){
+        $data = $request->all();
+        $allNews = News::all();
+        $newsList = [];
+
+        foreach($allNews as $key => $news){
+            if($data['housetype'] == $news->house->TypeOfHouse){
+                if($data['housecity'] == $news->house->city->CityName){
+                    $newsList = Arr::add($newsList, $key, $news); 
+                }
+            }
+        }
+        return View('client.home', compact('newsList'));
+
     }
    
 }
