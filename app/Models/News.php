@@ -16,8 +16,8 @@ class News extends Model
         return $this->belongsTo(House::class, 'HouseID');
     }
 
-    public function userInfo(){
-        return $this->belongsTo(UserInfo::class, 'UserID');
+    public function user(){
+        return $this->belongsTo(User::class, 'UserID');
     }
 }
 

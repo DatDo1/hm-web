@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\clientC;
 
 use App\Models\News;
+use App\Models\User;
 use App\Models\House;
+use App\Models\UserInfo;
 use Illuminate\Support\Arr;
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\UserInfo;
-use Facade\FlareClient\View;
 
 class CNewsController extends Controller
 {
@@ -113,21 +114,21 @@ class CNewsController extends Controller
     }
 
     public function detailNews($id){
-        $newsList = News::all();
         $data = News::find($id);
+        // dd($data->user);
         return View('client.details', ['news'=>$data]);
     }
 
     public function addNews(){
         $title = 'Tạo tin mới';
-        $userList = UserInfo::all();
+        $userList = User::all();
         $houseList = House::all();
         return view('client.add-news', compact('title', 'userList', 'houseList'));
     }
 
     public function storeNews(Request $request){
         $data = $request->input();
-        $userList = UserInfo::all();
+        $userList = User::all();
         $houseList = House::all();
 
         $newsName = $data['newsname'];
@@ -158,10 +159,10 @@ class CNewsController extends Controller
         $news->EndDate = $endDate;
         
         foreach($userList as $key => $value){
-            if($value->user->name == session('user')){
-                $news->UserID = $value->UserID;
+            if($value->id == session('userID')){
+                $news->UserID = $value->id;
                 foreach($houseList as $itemHouse){
-                    if($value->UserID == $itemHouse->UserID){
+                    if($value->id == $itemHouse->UserID){
                         $news->HouseID = $newsHouse;
                     }
                 }
@@ -174,7 +175,7 @@ class CNewsController extends Controller
 
     public function myNews(){
         $title = 'Danh sách tin';
-        $userList = UserInfo::all();
+        $userList = User::all();
         $houseList = House::all();
         $newsList = News::all();
         return View('client.myNews', compact('title','userList','houseList','newsList'));

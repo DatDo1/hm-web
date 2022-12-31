@@ -15,9 +15,9 @@
 <button style="float: right"><a href="{{route('client.addHouses')}}">Thêm nhà</a></button> <br> <br>
     <div class="containner">
         @foreach($userList as $key => $value)
-            @if($value->user->name == session('user'))
+            @if($value->name == session('user'))
                 @foreach($houseList as $house)
-                    @if($value->UserID == $house->UserID)
+                    @if($value->id == $house->UserID)
                     <div style="border: 1px solid black">
                         <div class="row">
                             <div class="col-4"> 

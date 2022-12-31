@@ -14,9 +14,9 @@ class House extends Model
     protected $table="house";
     protected $primaryKey="HouseID";
 
-    public function userInfo()
+    public function user()
     {
-        return $this->belongsTo(UserInfo::class, 'UserID');
+        return $this->belongsTo(User::class, 'UserID');
     }
 
 

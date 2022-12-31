@@ -12,8 +12,8 @@ class Role extends Model
     protected $table="role";
     protected $primaryKey="RoleID";
 
-    public function userInfo()
+    public function user()
     {
-        return $this->hasMany(UserInfo::class, 'UserID');
+        return $this->hasMany(User::class, 'id');
     }
 }

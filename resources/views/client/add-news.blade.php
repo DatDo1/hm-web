@@ -36,9 +36,9 @@
                 <div class="col-10">
                     <select name="newshouse" class="text-input">
                         @foreach($userList as $key => $value){
-                            @if($value->user->name == session('user')){
+                            @if($value->name == session('user')){
                                 @foreach($houseList as $itemHouse){
-                                    @if($value->UserID == $itemHouse->UserID){
+                                    @if($value->id == $itemHouse->UserID){
                                         <option value="{{$itemHouse->HouseID}}">{{$itemHouse->Location}}</option>
                                     }
                                     @endif

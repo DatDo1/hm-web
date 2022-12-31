@@ -14,9 +14,9 @@
 <h2 style="color:var(--primary); text-align: center;">Tin tức của tôi</h2> <br>
     <div class="containner">
         @foreach($userList as $key => $value)
-            @if($value->user->name == session('user'))
+            @if($value->name == session('user'))
                 @foreach($newsList as $news)
-                    @if($value->UserID == $news->UserID)
+                    @if($value->userInfo->UserID == $news->UserID)
                     <div style="border: 1px solid black">
                         <div class="row">
                             <div class="col-4"> 

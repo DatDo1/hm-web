@@ -126,7 +126,7 @@ class LoginController extends Controller
                         return redirect('admin/houses-management');
                     } else {
                         $request->session()->put('user',  $value->name);
-                        $request->session()->put('userID', $value->UserID);
+                        $request->session()->put('userID', $value->id);
                         return redirect('');
                     }
                 }

@@ -50,6 +50,18 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserInfo::class, 'UserID');
     }
+
+    public function house(){
+        return $this->hasMany(House::class, 'HouseID');
+    }
+
+    public function news(){
+        return $this->hasMany(News::class,'NewsID');
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class, 'RoleID');
+    }
     
 }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\clientC;
 
 use App\Models\City;
 use App\Models\News;
+use App\Models\User;
 use App\Models\House;
 use App\Models\UserInfo;
 use Illuminate\Support\Arr;
@@ -93,7 +94,7 @@ class CHousesController extends Controller
 
     public function myHouses(){
         $title = 'Danh sách nhà';
-        $userList = UserInfo::all();
+        $userList = User::all();
         $houseList = House::all();
         $newsList = News::all();
         return View('client.myHouses', compact('title','userList','houseList','newsList'));
@@ -108,7 +109,7 @@ class CHousesController extends Controller
     }
 
     public function storeHouses(Request $request){
-        $userList = UserInfo::all();
+        $userList = User::all();
         $data = $request->input();
         $houseType = $data['housetype'];
         $houseArea = $data['housearea'];
@@ -131,8 +132,10 @@ class CHousesController extends Controller
         $house->Price = $housePrice;
         $house->CityID = $houseCity;
         foreach ($userList as $user) {
-            if($user->UserID == session('userID')){  //khong nen dung session la ten user (trung)
-                $house->UserID = $user->UserID;  
+            // dd(session('userID'));
+            if($user->id == session('userID')){  
+                $house->UserID = $user->id;
+               ;
             }
         }
         $imageName = time().'.'.$request->houseimage->extension();  
@@ -209,8 +212,8 @@ class CHousesController extends Controller
     public function deleteHouse($id){
         $house = (House::find($id));
         if($house->delete()){
-            return redirect('my-news')->with('message', 'Xóa nhà thành công!!');
+            return redirect('my-houses')->with('message', 'Xóa nhà thành công!!');
         }
-        return redirect('my-news')->with('message', 'Xóa nhà thất bại!!');
+        return redirect('my-houses')->with('message', 'Xóa nhà thất bại!!');
     }
 }

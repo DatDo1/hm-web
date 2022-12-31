@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+<br> <br>
     <div class="container">
         <div class="row">
             <div class="col-7"> 
@@ -35,13 +36,13 @@
                         <div class=""><small>{{$news->Description}}</small></div>
                         <h6 class=""><small>{{$news->house->Location}}, {{$news->house->city->CityName}}</small></h6> <br>
 
-                     
+                        <br> <br> <br> <br>
                         <div class=""><small>Được đăng bởi</small></div>
                         <h6 class="">
-                            <small>{{$news->userInfo->UserName}}</small>
+                            <small>{{$news->user->userInfo->UserName}}</small>
                         </h6>
                         <h6 class="">
-                            <small>{{$news->userInfo->Phone}}</small>
+                            <small>{{$news->user->userInfo->Phone}}</small>
                         </h6> <br>
                         <h6 class=""><small>{{$news->StartDate}}</small></h6> 
                     </div> 
