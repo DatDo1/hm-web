@@ -113,24 +113,25 @@ class LoginController extends Controller
     {
         $data = $request->input();
        
-        $userList = UserInfo::all();
+        $userList = User::all();
         $messageAnou = 'Tài khoản hoặc mật khẩu không chính xác';
-        foreach ($userList as $key => $value) {
-            if($data['email'] == $value->user->email && Hash::check($data['password'], $value->user->password)) {
-                if ($value->RoleID == 1) {
-                    
-                    $request->session()->put('user', $value->user->name);
-                    $request->session()->put('userID', $value->UserID);
-                    $request->session()->put('RoleID', $value->RoleID);
-                    return redirect('admin/houses-management');
-                } else if ($value->RoleID == 0) {
-                    $request->session()->put('user',  $value->user->name);
-                    $request->session()->put('userID', $value->UserID);
-                    return redirect('');
+        // dd($userList);
+        foreach ($userList as $key => $value) {    
+            if($data['email'] == $value->email){
+                if(Hash::check($data['password'], $value->password)) {
+                    if ($value->RoleID == 1) {
+                        $request->session()->put('user', $value->name);
+                        $request->session()->put('userID', $value->id);
+                        $request->session()->put('RoleID', $value->RoleID);
+                        return redirect('admin/houses-management');
+                    } else {
+                        $request->session()->put('user',  $value->name);
+                        $request->session()->put('userID', $value->UserID);
+                        return redirect('');
+                    }
                 }
             }
         }
-
         return redirect('login')->with('message', $messageAnou);
     }
     public function adminLogout(Request $request)

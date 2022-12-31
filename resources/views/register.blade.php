@@ -71,9 +71,13 @@
 				<form action="{{route('post-register')}}" method="POST">
 					@csrf
 					<p>
-						@if($errors->has('username'))
+						<input class="text-input" type="text" name="roleid" hidden value="0"/>
+					</p>
+					<div class="clear"></div>
+					<p>
+						{{-- @if($errors->has('username'))
 							<span style="color:red; margin-left: 90px;">{{$error->first('username')}}</span>
-						@endif
+						@endif --}}
 						<label>Username</label>
 						<input class="text-input" type="text" name="username" />
 					</p>
@@ -85,9 +89,9 @@
 					</p>
 					<div class="clear"></div>
 					<p>
-						@if($errors->has('password'))
+						{{-- @if($errors->has('password'))
 							<span style="color:red; margin-left: 90px;">{{$error->first('password')}}</span>
-						@endif
+						@endif --}}
 						<label>Password</label>
 						<input class="text-input" type="password" name="password" />
 					</p>

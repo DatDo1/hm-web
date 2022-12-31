@@ -105,15 +105,16 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['username'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'RoleID' => $data['roleid']
         ]);
     }
 
     public function userRegister(Request $request){
         $request->validate([
-            'username' => 'required',
+            'username' => 'required|alpha',
             'email' => 'required|unique:users',
-            'password' => 'required|min:6'
+            'password' => 'required|min:8'
         ]);
 
         $data = $request->all();
@@ -121,5 +122,6 @@ class RegisterController extends Controller
         if ($create) {
             return redirect('login');
         }
+        return redirect('register');
     }
 }

@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'RoleID'
     ];
 
     /**
@@ -47,7 +48,7 @@ class User extends Authenticatable
 
     public function userInfo()
     {
-        return $this->belongsTo(UserInfo::class, 'UserID');
+        return $this->hasOne(UserInfo::class, 'UserID');
     }
     
 }
